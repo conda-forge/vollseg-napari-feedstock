@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/vollseg-napari-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/vollseg-napari-{{ version }}.tar.gz
   sha256: 1949f0d9c6bea1f7c80f984c401dee3080f6bedc0379f6d6e87e24068cba108e
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - magicgui >=0.4.0
     - napari >=0.4.13
     - napari-plugin-engine
-    - python >=3.7
+    - python >={{ python_min }}
     - tensorflow
     - vollseg
     - psygnal
@@ -39,6 +39,7 @@ test:
     # - pip check  # Fails due to opencv-python
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/kapoorlab/vollseg-napari
