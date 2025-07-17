@@ -1,18 +1,18 @@
 {% set name = "vollseg-napari" %}
-{% set version = "2.4.7" %}
+{% set version = "2.4.9" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/vollseg-napari-{{ version }}.tar.gz
-  sha256: 1949f0d9c6bea1f7c80f984c401dee3080f6bedc0379f6d6e87e24068cba108e
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: b4b5feef36ec00a2d552240e50e17f5677128f22a63d8e29d58661539bd35bfc
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
